@@ -15,5 +15,17 @@
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.tispunshahryar960103.aparatmovies.view.fragments.CategoryFragment"
-        android:label="CategoryFragment" />
+        android:label="CategoryFragment" >
+        <action
+            android:id="@+id/action_categoryFragment_to_categoryVideosFragment"
+            app:destination="@id/categoryVideosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryVideosFragment"
+        android:name="com.tispunshahryar960103.aparatmovies.view.fragments.CategoryVideosFragment"
+        android:label="CategoryVideosFragment" >
+        <action
+            android:id="@+id/action_categoryVideosFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+    </fragment>
 </navigation>

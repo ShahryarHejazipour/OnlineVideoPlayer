@@ -8,7 +8,7 @@ import com.tispunshahryar960103.aparatmovies.R
 import com.tispunshahryar960103.aparatmovies.databinding.RowVideosBinding
 import com.tispunshahryar960103.aparatmovies.models.Video
 
-class VideosAdapter(val videoList:List<Video>): RecyclerView.Adapter<VideosAdapter.VideoVH>() {
+class VideosAdapter(private val videoList:List<Video>): RecyclerView.Adapter<VideosAdapter.VideoVH>() {
 
 
     override fun getItemViewType(position: Int): Int {

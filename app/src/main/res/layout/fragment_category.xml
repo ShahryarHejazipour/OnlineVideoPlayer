@@ -6,17 +6,28 @@
 
     </data>
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".view.fragments.CategoryFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+   <androidx.appcompat.widget.AppCompatTextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/txt_description"
+       android:layout_margin="@dimen/_8sdp"/>
+        <ProgressBar
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress_category"
+            android:layout_centerInParent="true"/>
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Category"
-            android:textSize="@dimen/_50sdp"/>
+            android:id="@+id/recycler_category"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_below="@id/txt_description"/>
 
-    </FrameLayout>
+    </RelativeLayout>
 </layout>

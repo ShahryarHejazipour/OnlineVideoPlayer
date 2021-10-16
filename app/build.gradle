@@ -59,6 +59,11 @@ android {
 
         }
     }
+
+    // Add for using latest experimental build of Android Extensions
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {

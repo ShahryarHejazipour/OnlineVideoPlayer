@@ -18,12 +18,84 @@ Java_com_tispunshahryar960103_aparatmovies_webService_ApiClient_getUrl(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_tispunshahryar960103_aparatmovies_utils_RetrofitStrings_getNewVideosUrl(
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle1(
         JNIEnv* env,
         jobject /* this */
         ){
 
-    std::string mUrl = "getNewVideos.php";
+    std::string mUrl = "Technology";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle2(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "Education";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle3(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "entertainment";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle4(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "Fun";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle5(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "Sports";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle6(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "Animation";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle7(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "Music";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment_getCategoryTitle8(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "Travel & Events";
     return env->NewStringUTF(mUrl.c_str());
 
 }
