@@ -18,7 +18,7 @@ Java_com_tispunshahryar960103_aparatmovies_webService_ApiClient_getUrl(
 }
 
 extern "C" JNIEXPORT jstring JNICALL
-Java_com_tispunshahryar960103_aparatmovies_utils_Constants_getNewVideosUrl(
+Java_com_tispunshahryar960103_aparatmovies_utils_RetrofitStrings_getNewVideosUrl(
         JNIEnv* env,
         jobject /* this */
         ){
