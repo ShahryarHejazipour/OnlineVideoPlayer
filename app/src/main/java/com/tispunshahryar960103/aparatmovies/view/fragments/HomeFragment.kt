@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tispunshahryar960103.aparatmovies.adapter.VideosAdapter
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentHomeBinding
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
-import com.tispunshahryar960103.aparatmovies.viewModel.NewVideosViewModel
-import com.tispunshahryar960103.aparatmovies.viewModel.NewVideosViewModelFactory
+import com.tispunshahryar960103.aparatmovies.viewModel.*
 import com.tispunshahryar960103.aparatmovies.webService.ApiClient
 import com.tispunshahryar960103.aparatmovies.webService.IService
 
@@ -23,11 +23,18 @@ import com.tispunshahryar960103.aparatmovies.webService.IService
 class HomeFragment() : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
-
-    lateinit var viewModel: NewVideosViewModel
-    lateinit var factory: NewVideosViewModelFactory
-    lateinit var repository: MyRepository
     lateinit var iService: IService
+    lateinit var repository: MyRepository
+
+
+    lateinit var newVideosViewModel: NewVideosViewModel
+    lateinit var newVideosViewModelFactory: NewVideosViewModelFactory
+
+    lateinit var specialVideosViewModel:SpecialVideosViewModel
+    lateinit var specialVideosViewModelFactory: SpecialVideosViewModelFactory
+
+    lateinit var bestVideosViewModel: BestVideosViewModel
+    lateinit var bestVideosViewModelFactory: BestVideosViewModelFactory
 
 
     override fun onCreateView(
@@ -39,13 +46,16 @@ class HomeFragment() : Fragment() {
 
         iService = ApiClient.getClient()
         repository = MyRepository(iService)
-        factory = NewVideosViewModelFactory(repository)
-        viewModel =
-            ViewModelProvider(requireActivity(), factory).get(NewVideosViewModel::class.java)
+
+
+        //Implementing newVideos webService
+        newVideosViewModelFactory = NewVideosViewModelFactory(repository)
+        newVideosViewModel =
+            ViewModelProvider(requireActivity(), newVideosViewModelFactory).get(NewVideosViewModel::class.java)
 
         binding.progressNewVideos.visibility = View.VISIBLE
-        viewModel.getNewVideos()
-        viewModel.mutableLiveData.observe(requireActivity(), Observer {
+        newVideosViewModel.getNewVideos()
+        newVideosViewModel.mutableLiveData.observe(requireActivity(), Observer {
 
             binding.progressNewVideos.visibility = View.GONE
             binding.recyclerNewVideos.layoutManager=LinearLayoutManager(requireActivity(),RecyclerView.HORIZONTAL,false)
@@ -57,8 +67,51 @@ class HomeFragment() : Fragment() {
 
         })
 
-        viewModel.mutableError.observe(requireActivity(), Observer {
+        newVideosViewModel.mutableError.observe(requireActivity(), Observer {
             binding.progressNewVideos.visibility = View.GONE
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_LONG).show()
+        })
+
+
+
+
+        //Implementing SpecialVideos webService
+        binding.progressSpecialVideos.visibility=View.VISIBLE
+        specialVideosViewModelFactory= SpecialVideosViewModelFactory(repository)
+        specialVideosViewModel=ViewModelProvider(requireActivity(),specialVideosViewModelFactory).get(SpecialVideosViewModel::class.java)
+        specialVideosViewModel.getSpecialVideos()
+        specialVideosViewModel.mutableLiveData.observe(requireActivity(), Observer {
+
+            binding.progressSpecialVideos.visibility=View.GONE
+            binding.recyclerSpecialVideos.layoutManager=LinearLayoutManager(requireActivity(),RecyclerView.HORIZONTAL,false)
+            binding.recyclerSpecialVideos.adapter=VideosAdapter(it)
+
+        })
+
+
+        specialVideosViewModel.mutableError.observe(requireActivity(), Observer {
+
+            binding.progressSpecialVideos.visibility = View.GONE
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_LONG).show()
+
+        })
+
+
+        //Implementing BestVideos webService
+        binding.progressBestVideos.visibility=View.VISIBLE
+        bestVideosViewModelFactory= BestVideosViewModelFactory(repository)
+        bestVideosViewModel=ViewModelProvider(requireActivity(),bestVideosViewModelFactory).get(BestVideosViewModel::class.java)
+        bestVideosViewModel.getBestVideos()
+        bestVideosViewModel.mutableLiveData.observe(requireActivity(), Observer {
+            binding.progressBestVideos.visibility=View.GONE
+           // binding.recyclerBestVideos.layoutManager=LinearLayoutManager(requireActivity(),RecyclerView.HORIZONTAL,false)
+            binding.recyclerBestVideos.layoutManager=GridLayoutManager(requireActivity(),2)
+            binding.recyclerBestVideos.adapter=VideosAdapter(it)
+
+        })
+
+        bestVideosViewModel.mutableError.observe(requireActivity(), Observer {
+            binding.progressBestVideos.visibility=View.GONE
             Toast.makeText(requireActivity(), it, Toast.LENGTH_LONG).show()
         })
 

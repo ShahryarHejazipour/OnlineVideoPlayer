@@ -6,59 +6,145 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".view.fragments.HomeFragment">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_marginTop="@dimen/_8sdp"
-            android:id="@+id/rel_new"
-            android:background="@drawable/bg_service"
-            android:layout_width="@dimen/_140sdp"
-            android:layout_height="@dimen/_45sdp"
-            android:layout_marginStart="@dimen/_8sdp">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/new_videos"
-                android:gravity="center"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".view.fragments.HomeFragment">
+
+            <RelativeLayout
+                android:id="@+id/rel_new"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:textColor="@color/white"/>
+                android:background="@drawable/bg_service">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/new_videos"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15ssp" />
 
 
-
-        </RelativeLayout>
-
+            </RelativeLayout>
 
 
-     <RelativeLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginStart="@dimen/_8sdp"
-         android:layout_marginTop="@dimen/_8sdp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp">
 
 
+                <ProgressBar
+                    android:id="@+id/progress_new_videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone" />
 
-         <ProgressBar
-             android:visibility="gone"
-             android:id="@+id/progress_new_videos"
-             android:layout_centerInParent="true"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_new_videos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-         <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/recycler_new_videos"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
 
+            <RelativeLayout
+                android:id="@+id/rel_special"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/bg_service">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/special_videos"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15ssp" />
 
 
-     </RelativeLayout>
+            </RelativeLayout>
 
-    </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp">
+
+
+                <ProgressBar
+                    android:id="@+id/progress_special_videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_special_videos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_best"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/bg_service">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/best_videos"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_15ssp" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp">
+
+
+                <ProgressBar
+                    android:id="@+id/progress_best_videos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_best_videos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

@@ -19,6 +19,19 @@ class MyRepository(private val iService: IService) {
     }
 
 
+    suspend fun getSpecialVideos():List<Video>{
+        return withContext(dispatcher){
+            iService.getSpecialVideos()
+        }
+    }
+
+    suspend fun getBestVideos():List<Video>{
+        return withContext(dispatcher){
+            iService.getBestVideos()
+        }
+    }
+
+
 
 
 
