@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AparatMovies</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="favorite">Favorite</string>
+    <string name="latest">Latest</string>
+    <string name="setting">Setting</string>
+    <string name="rate_app">Rate App</string>
+    <string name="login">Login</string>
+    <string name="exit">Exit</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+</resources>

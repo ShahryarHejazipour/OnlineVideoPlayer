@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/item_home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_baseline_home_24"/>
+
+    <item
+        android:id="@+id/item_category"
+        android:title="@string/category"
+        android:icon="@drawable/ic_baseline_category_24"/>
+
+
+    <item
+        android:id="@+id/item_favorite"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_baseline_favorite_24"/>
+    <item
+        android:id="@+id/item_latest"
+        android:title="@string/latest"
+        android:icon="@drawable/ic_baseline_hourglass_bottom_24"/>
+
+    <item
+        android:id="@+id/item_rate"
+        android:title="@string/rate_app"
+        android:icon="@drawable/ic_baseline_star_rate_24"/>
+
+
+    <item
+        android:id="@+id/item_setting"
+        android:title="@string/setting"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+    <item
+        android:id="@+id/item_login"
+        android:title="@string/login"
+        android:icon="@drawable/ic_baseline_login_24"/>
+    <item
+        android:id="@+id/item_exit"
+        android:title="@string/exit"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"/>
+
+
+
+</menu>
