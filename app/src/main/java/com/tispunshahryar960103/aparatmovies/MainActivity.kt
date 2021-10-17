@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.SearchView
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -14,13 +15,14 @@ import com.google.android.material.navigation.NavigationBarView
 import com.tispunshahryar960103.aparatmovies.databinding.ActivityMainBinding
 import com.tispunshahryar960103.aparatmovies.utils.Constants
 
-class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener,
+    SearchView.OnQueryTextListener {
 
     lateinit var binding: ActivityMainBinding
     lateinit var navController: NavController
     var toggle: ActionBarDrawerToggle? = null
 
-    companion object{
+    companion object {
         init {
             System.loadLibrary(Constants.LOAD_LIBRARY.str);
         }
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
         }
 
-        val str:String=stringFromJNI()
+        val str: String = stringFromJNI()
         Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
 
 
@@ -122,7 +124,39 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
 
+        //آیتم مورد نظر را گرفته و در searchItem می ریزیم
+        val searchItem: MenuItem? = menu?.findItem(R.id.item_search)
+
+        //آیتم بالا را به ویجت SearchView تبدیل یا cast می کنیم که با کلیک روی آن حالت یک باکس سرچ برای تایپ عبارت سرچ را به خود بگیرد
+        val searchView: SearchView = searchItem?.actionView as SearchView
+
+        //queryHint برای نسان دادن یک hint درون باکس سرچ است
+        searchView.queryHint = "Search View"
+
+        //ست کردن Listener برای دریافت عبارت سرچ شده توسط کاربر یا همان query و مدیریت آن
+        searchView.setOnQueryTextListener(this)
+
+
+
         return super.onCreateOptionsMenu(menu)
+    }
+
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+
+        val bundle = Bundle()
+        bundle.putString("search", query)
+        navController.navigate(R.id.searchFragment, bundle)
+
+        return false
+
+
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+
+        return true
+
     }
 
 
@@ -135,9 +169,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
 
     //Using NDK C++
-   private external fun stringFromJNI(): String
-
-
+    private external fun stringFromJNI(): String
 
 
 }

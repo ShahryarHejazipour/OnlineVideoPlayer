@@ -59,4 +59,8 @@
             android:id="@+id/action_playerFragment_to_categoryVideosFragment"
             app:destination="@id/categoryVideosFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.tispunshahryar960103.aparatmovies.view.fragments.SearchFragment"
+        android:label="SearchFragment" />
 </navigation>

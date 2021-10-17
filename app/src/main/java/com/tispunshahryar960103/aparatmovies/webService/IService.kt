@@ -3,10 +3,7 @@ package com.tispunshahryar960103.aparatmovies.webService
 import com.tispunshahryar960103.aparatmovies.models.Category
 import com.tispunshahryar960103.aparatmovies.models.News
 import com.tispunshahryar960103.aparatmovies.models.Video
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface IService {
 
@@ -30,6 +27,9 @@ interface IService {
 
     @GET("getNews.php")
     suspend fun getNews():List<News>
+
+    @GET("search.php")
+    suspend fun search(@Query("title") querySearch:String?):List<Video>
 
 
 

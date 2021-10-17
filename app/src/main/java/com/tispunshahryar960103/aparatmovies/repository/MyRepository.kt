@@ -51,6 +51,12 @@ class MyRepository(private val iService: IService) {
         }
     }
 
+    suspend fun search(querySearch:String?):List<Video>{
+        return withContext(dispatcher){
+            iService.search(querySearch)
+        }
+    }
+
 
 
 
