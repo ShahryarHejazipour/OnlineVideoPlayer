@@ -1,8 +1,11 @@
 package com.tispunshahryar960103.aparatmovies.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Video(
 
     @SerializedName("cat_id")
@@ -35,4 +38,4 @@ data class Video(
     @SerializedName("view")
     @Expose
     val view: String
-)
+):Parcelable

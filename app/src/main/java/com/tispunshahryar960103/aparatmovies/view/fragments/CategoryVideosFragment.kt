@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.tispunshahryar960103.aparatmovies.R
 import com.tispunshahryar960103.aparatmovies.adapter.VideosAdapter
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentCategoryVideosBinding
 import com.tispunshahryar960103.aparatmovies.models.Category
@@ -45,29 +47,27 @@ class CategoryVideosFragment : Fragment() {
 
         binding = FragmentCategoryVideosBinding.inflate(inflater, container, false)
 
+
+
+
         iService=ApiClient.getClient()
         repository= MyRepository(iService)
         factory= VideosCategoryViewModelFactory(repository)
         videosCategoryViewModel=ViewModelProvider(requireActivity(),factory).get(VideosCategoryViewModel::class.java)
 
 
-
-
-
-
         binding.imgBack.setOnClickListener(View.OnClickListener {
 
-            requireActivity().finish()
+          Navigation.findNavController(it).navigate(R.id.action_categoryVideosFragment_to_categoryFragment)
 
         })
 
-       // val categoryTitle=arguments?.getString("title","")
-       // val categoryDescription=arguments?.getString("description","")
 
+        //getting the clicked object in CategoryAdapter that had sent with bundle and jetPack navigation component
         val category: Category? =arguments?.getParcelable("category")
-        if (category != null) {
-            setCategoryInfo(category.title, category.description)
-        }
+
+        //for using dataBinding to set values into the XML layout of this fragment
+        binding.category=category
 
         if (category != null) {
             videosCategoryViewModel.getVideosCategory(category.id.toInt(),0,10)
@@ -91,36 +91,12 @@ class CategoryVideosFragment : Fragment() {
         })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         return binding.root
     }
 
-    private fun setCategoryInfo(categoryTitle: String?, categoryDescription: String?) {
-        binding.txtCategoryTitle.text = categoryTitle
-        binding.txtCategoryDescription.text = categoryDescription
-    }
 
-    private external fun getCategoryTitle1():String
-    private external fun getCategoryTitle2():String
-    private external fun getCategoryTitle3():String
-    private external fun getCategoryTitle4():String
-    private external fun getCategoryTitle5():String
-    private external fun getCategoryTitle6():String
-    private external fun getCategoryTitle7():String
-    private external fun getCategoryTitle8():String
+
+
 
 
 

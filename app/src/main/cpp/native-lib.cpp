@@ -100,6 +100,28 @@ Java_com_tispunshahryar960103_aparatmovies_view_fragments_CategoryVideosFragment
 
 }
 
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_adapter_VideosAdapter_videoKeyForBundle(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "video";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_PlayerFragment_videoKeyForBundle(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "video";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
 
 
 

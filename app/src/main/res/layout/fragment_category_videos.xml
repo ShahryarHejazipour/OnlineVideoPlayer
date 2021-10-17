@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="category"
+            type="com.tispunshahryar960103.aparatmovies.models.Category" />
+
     </data>
 
     <RelativeLayout
@@ -33,7 +37,7 @@
                    android:layout_height="wrap_content"
                    android:id="@+id/txt_category_title"
                    android:textColor="@color/white"
-
+                    android:text="@{category.title}"
                    android:layout_centerInParent="true"/>
 
 
@@ -47,6 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/txt_category_description"
             android:layout_below="@id/toolbar"
+            android:text="@{category.description}"
             android:layout_marginTop="@dimen/_8sdp"/>
 
         <ProgressBar

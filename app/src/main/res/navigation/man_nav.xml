@@ -7,11 +7,19 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.tispunshahryar960103.aparatmovies.view.fragments.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.tispunshahryar960103.aparatmovies.view.fragments.FavoriteFragment"
-        android:label="FavoriteFragment" />
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.tispunshahryar960103.aparatmovies.view.fragments.CategoryFragment"
@@ -19,6 +27,9 @@
         <action
             android:id="@+id/action_categoryFragment_to_categoryVideosFragment"
             app:destination="@id/categoryVideosFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryVideosFragment"
@@ -27,5 +38,25 @@
         <action
             android:id="@+id/action_categoryVideosFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_categoryVideosFragment_to_playerFragment"
+            app:destination="@id/playerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="com.tispunshahryar960103.aparatmovies.view.fragments.PlayerFragment"
+        android:label="PlayerFragment" >
+        <action
+            android:id="@+id/action_playerFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_playerFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_playerFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_playerFragment_to_categoryVideosFragment"
+            app:destination="@id/categoryVideosFragment" />
     </fragment>
 </navigation>
