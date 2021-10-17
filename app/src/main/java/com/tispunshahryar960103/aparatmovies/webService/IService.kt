@@ -1,6 +1,7 @@
 package com.tispunshahryar960103.aparatmovies.webService
 
 import com.tispunshahryar960103.aparatmovies.models.Category
+import com.tispunshahryar960103.aparatmovies.models.News
 import com.tispunshahryar960103.aparatmovies.models.Video
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -27,6 +28,8 @@ interface IService {
     suspend fun getVideosCategory(@Field("catId") id:Int,@Field("from") from:Int,@Field("to") to:Int):List<Video>
 
 
+    @GET("getNews.php")
+    suspend fun getNews():List<News>
 
 
 

@@ -193,5 +193,10 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.1'
     implementation 'com.google.android.exoplayer:exoplayer:2.15.1'
 
+    //-------------------------------------------------------------------
+    //View Pager Indicator
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+
+
 
 }

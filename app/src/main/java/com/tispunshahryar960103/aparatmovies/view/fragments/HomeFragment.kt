@@ -12,15 +12,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
+import com.tispunshahryar960103.aparatmovies.adapter.NewsAdapter
 import com.tispunshahryar960103.aparatmovies.adapter.VideosAdapter
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentHomeBinding
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
 import com.tispunshahryar960103.aparatmovies.viewModel.*
 import com.tispunshahryar960103.aparatmovies.webService.ApiClient
 import com.tispunshahryar960103.aparatmovies.webService.IService
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class HomeFragment() : Fragment() {
+class HomeFragment() : Fragment()/*,ViewPager.OnPageChangeListener*/ {
 
     lateinit var binding: FragmentHomeBinding
     lateinit var iService: IService
@@ -35,6 +38,9 @@ class HomeFragment() : Fragment() {
 
     lateinit var bestVideosViewModel: BestVideosViewModel
     lateinit var bestVideosViewModelFactory: BestVideosViewModelFactory
+
+    lateinit var newsViewModel: NewsViewModel
+    lateinit var newsViewModelFactory: NewsViewModelFactory
 
 
     override fun onCreateView(
@@ -117,14 +123,42 @@ class HomeFragment() : Fragment() {
 
 
 
+        //Implementing News webService
+
+        newsViewModelFactory= NewsViewModelFactory(repository)
+        newsViewModel=ViewModelProvider(requireActivity(),newsViewModelFactory).get(NewsViewModel::class.java)
+
+        newsViewModel.getNews()
+        newsViewModel.mutableLiveData.observe(requireActivity(), Observer {
+
+            binding.pager.adapter=NewsAdapter(requireActivity(),it)
+
+        })
+
+        newsViewModel.mutableError.observe(requireActivity(), Observer {
+
+            Log.e("", "" )
+        })
 
 
-
-
+        //setting up the View Pager Indicator
+       // binding.pager.addOnPageChangeListener(this)
 
 
         return binding.root
     }
+
+/*    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPageSelected(position: Int) {
+        pageIndicatorView.selection = position;
+    }
+
+    override fun onPageScrollStateChanged(state: Int) {
+        TODO("Not yet implemented")
+    }*/
 
 
 }

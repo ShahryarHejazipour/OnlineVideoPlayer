@@ -1,6 +1,7 @@
 package com.tispunshahryar960103.aparatmovies.repository
 
 import com.tispunshahryar960103.aparatmovies.models.Category
+import com.tispunshahryar960103.aparatmovies.models.News
 import com.tispunshahryar960103.aparatmovies.models.Video
 import com.tispunshahryar960103.aparatmovies.webService.IService
 import kotlinx.coroutines.Dispatchers
@@ -41,6 +42,12 @@ class MyRepository(private val iService: IService) {
     suspend fun getVideosCategory(id:Int,from:Int,to:Int):List<Video>{
         return withContext(dispatcher){
             iService.getVideosCategory(id,from,to)
+        }
+    }
+
+    suspend fun getNews():List<News>{
+        return withContext(dispatcher){
+            iService.getNews()
         }
     }
 

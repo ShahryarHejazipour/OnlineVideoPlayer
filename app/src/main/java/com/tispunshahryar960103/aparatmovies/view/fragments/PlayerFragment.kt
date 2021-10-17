@@ -60,12 +60,6 @@ class PlayerFragment : Fragment() {
         player.playWhenReady=true
         binding.exoPlayer.player=player
 
-
-
-
-
-
-
         return binding.root
     }
 
