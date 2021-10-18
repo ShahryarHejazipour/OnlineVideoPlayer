@@ -13,8 +13,8 @@ import com.tispunshahryar960103.aparatmovies.R
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentLoginBinding
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
 import com.tispunshahryar960103.aparatmovies.utils.AppConfig
-import com.tispunshahryar960103.aparatmovies.viewModel.LoginViewModel
-import com.tispunshahryar960103.aparatmovies.viewModel.LoginViewModelFactory
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.LoginViewModel
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.LoginViewModelFactory
 import com.tispunshahryar960103.aparatmovies.webService.ApiClient
 import com.tispunshahryar960103.aparatmovies.webService.IService
 import org.json.JSONObject

@@ -16,8 +16,8 @@ import com.tispunshahryar960103.aparatmovies.R
 import com.tispunshahryar960103.aparatmovies.adapter.VideosAdapter
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentSearchBinding
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
-import com.tispunshahryar960103.aparatmovies.viewModel.SearchViewModel
-import com.tispunshahryar960103.aparatmovies.viewModel.SearchViewModelFactory
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.SearchViewModel
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.SearchViewModelFactory
 import com.tispunshahryar960103.aparatmovies.webService.ApiClient
 import com.tispunshahryar960103.aparatmovies.webService.IService
 
@@ -52,7 +52,8 @@ class SearchFragment : Fragment() {
         val searchQuery: String? =arguments?.getString("search","")
 
         searchViewModelFactory= SearchViewModelFactory(repository)
-        searchViewModel=ViewModelProvider(requireActivity(),searchViewModelFactory).get(SearchViewModel::class.java)
+        searchViewModel=ViewModelProvider(requireActivity(),searchViewModelFactory).get(
+            SearchViewModel::class.java)
         if (searchQuery != null) {
 
 

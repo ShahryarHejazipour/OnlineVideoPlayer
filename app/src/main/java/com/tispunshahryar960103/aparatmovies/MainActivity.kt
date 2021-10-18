@@ -14,6 +14,8 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
 import com.tispunshahryar960103.aparatmovies.databinding.ActivityMainBinding
+import com.tispunshahryar960103.aparatmovies.orm.AppDatabase
+import com.tispunshahryar960103.aparatmovies.orm.VideoDAO
 import com.tispunshahryar960103.aparatmovies.utils.AppConfig
 import com.tispunshahryar960103.aparatmovies.utils.Constants
 
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     lateinit var navController: NavController
     var toggle: ActionBarDrawerToggle? = null
     lateinit var appConfig: AppConfig
+
+    lateinit var videoDAO: VideoDAO
 
     companion object {
         init {
@@ -37,6 +41,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
+
 
         appConfig = AppConfig(applicationContext)
 

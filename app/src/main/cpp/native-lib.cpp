@@ -110,6 +110,26 @@ Java_com_tispunshahryar960103_aparatmovies_adapter_VideosAdapter_videoKeyForBund
     return env->NewStringUTF(mUrl.c_str());
 
 }
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_adapter_VideosVOAdapter_videoKeyForBundleVO(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "videoVO";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_PlayerFragment_videoKeyForBundleVO(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "video";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
 
 extern "C" JNIEXPORT jstring JNICALL
 Java_com_tispunshahryar960103_aparatmovies_view_fragments_PlayerFragment_videoKeyForBundle(
@@ -121,6 +141,8 @@ Java_com_tispunshahryar960103_aparatmovies_view_fragments_PlayerFragment_videoKe
     return env->NewStringUTF(mUrl.c_str());
 
 }
+
+
 
 
 extern "C" JNIEXPORT jstring JNICALL
@@ -142,6 +164,17 @@ Java_com_tispunshahryar960103_aparatmovies_utils_AppConfig_getSharedFileName(
 ){
 
     std::string mUrl = "secured_shared";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_orm_AppDatabase_getDatabaseName(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "videos.db";
     return env->NewStringUTF(mUrl.c_str());
 
 }

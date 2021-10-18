@@ -1,30 +1,33 @@
-package com.tispunshahryar960103.aparatmovies.viewModel
+package com.tispunshahryar960103.aparatmovies.viewModel.roomViewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tispunshahryar960103.aparatmovies.models.Video
-import com.tispunshahryar960103.aparatmovies.repository.MyRepository
+import com.tispunshahryar960103.aparatmovies.models.VideoVO
+import com.tispunshahryar960103.aparatmovies.repository.RoomRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class NewVideosViewModel(private val myRepository: MyRepository) : ViewModel() {
+class InsertViewModel(private val roomRepository: RoomRepository):ViewModel() {
+
+
 
     lateinit var job: Job
 
-    var mutableLiveData = MutableLiveData<List<Video>>()
+    var mutableLiveData = MutableLiveData<Long>()
     var mutableError = MutableLiveData<String>()
 
 
-    fun getNewVideos() {
+    fun insertVideo(videoVO: VideoVO) {
 
         job = viewModelScope.launch {
 
             try {
 
-                val newVideosList = myRepository.getNewVideos()
-                mutableLiveData.value = newVideosList
+                val result = roomRepository.insertVideo(videoVO)
+                mutableLiveData.value = result
             } catch (e: Exception) {
                 mutableError.value = e.toString()
             }
@@ -37,6 +40,7 @@ class NewVideosViewModel(private val myRepository: MyRepository) : ViewModel() {
         super.onCleared()
         if (::job.isInitialized) job.cancel()
     }
+
 
 
 }

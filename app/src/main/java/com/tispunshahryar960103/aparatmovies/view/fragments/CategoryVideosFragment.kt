@@ -10,16 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.tispunshahryar960103.aparatmovies.R
 import com.tispunshahryar960103.aparatmovies.adapter.VideosAdapter
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentCategoryVideosBinding
 import com.tispunshahryar960103.aparatmovies.models.Category
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
 import com.tispunshahryar960103.aparatmovies.utils.Constants
-import com.tispunshahryar960103.aparatmovies.viewModel.VideosCategoryViewModel
-import com.tispunshahryar960103.aparatmovies.viewModel.VideosCategoryViewModelFactory
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.VideosCategoryViewModel
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.VideosCategoryViewModelFactory
 import com.tispunshahryar960103.aparatmovies.webService.ApiClient
 import com.tispunshahryar960103.aparatmovies.webService.IService
 
@@ -53,7 +51,8 @@ class CategoryVideosFragment : Fragment() {
         iService=ApiClient.getClient()
         repository= MyRepository(iService)
         factory= VideosCategoryViewModelFactory(repository)
-        videosCategoryViewModel=ViewModelProvider(requireActivity(),factory).get(VideosCategoryViewModel::class.java)
+        videosCategoryViewModel=ViewModelProvider(requireActivity(),factory).get(
+            VideosCategoryViewModel::class.java)
 
 
         binding.imgBack.setOnClickListener(View.OnClickListener {

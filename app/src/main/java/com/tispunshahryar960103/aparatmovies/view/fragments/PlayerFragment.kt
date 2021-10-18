@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -19,7 +22,13 @@ import com.google.android.exoplayer2.util.Util
 import com.tispunshahryar960103.aparatmovies.R
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentPlayerBinding
 import com.tispunshahryar960103.aparatmovies.models.Video
+import com.tispunshahryar960103.aparatmovies.models.VideoVO
+import com.tispunshahryar960103.aparatmovies.orm.AppDatabase
+import com.tispunshahryar960103.aparatmovies.orm.VideoDAO
+import com.tispunshahryar960103.aparatmovies.repository.RoomRepository
 import com.tispunshahryar960103.aparatmovies.utils.Constants
+import com.tispunshahryar960103.aparatmovies.viewModel.roomViewModels.InsertViewModel
+import com.tispunshahryar960103.aparatmovies.viewModel.roomViewModels.InsertViewModelFactory
 
 
 class PlayerFragment : Fragment() {
@@ -33,6 +42,11 @@ class PlayerFragment : Fragment() {
     lateinit var binding:FragmentPlayerBinding
     lateinit var video:Video
     lateinit var player:SimpleExoPlayer
+    lateinit var videoDAO: VideoDAO
+
+    lateinit var insertViewModel: InsertViewModel
+    lateinit var insertViewModelFactory: InsertViewModelFactory
+    lateinit var roomRepository: RoomRepository
 
 
     override fun onCreateView(
@@ -42,7 +56,11 @@ class PlayerFragment : Fragment() {
         // Inflate the layout for this fragment
         binding= FragmentPlayerBinding.inflate(inflater,container,false)
 
+
+
+
         video= arguments?.getParcelable(videoKeyForBundle())!!
+        video= arguments?.getParcelable(videoKeyForBundleVO())!!
         binding.video=video
         binding.imgBack.setOnClickListener(View.OnClickListener {
             requireActivity().finish()
@@ -60,6 +78,44 @@ class PlayerFragment : Fragment() {
         player.playWhenReady=true
         binding.exoPlayer.player=player
 
+
+        /*
+        for setting up the bookmark videos and saving them in Room
+         */
+
+        videoDAO=AppDatabase.getInstance(requireActivity()).getVideoDAO()
+        roomRepository= RoomRepository(videoDAO)
+        insertViewModelFactory= InsertViewModelFactory(roomRepository)
+        insertViewModel=ViewModelProvider(requireActivity(),insertViewModelFactory).get(InsertViewModel::class.java)
+
+
+        binding.imgBookmark.setOnClickListener(View.OnClickListener {
+
+            val videoVO=VideoVO(video.id.toInt(),video.cat_id.toInt(),video.creator.toInt(),video.description
+                ,video.icon,video.link,video.special.toInt(),video.time,video.title,video.view.toInt())
+            insertViewModel.insertVideo(videoVO)
+            insertViewModel.mutableLiveData.observe(requireActivity(), Observer {
+
+                if (it>0){
+                    Toast.makeText(requireActivity(), "ویدیو به علاقه مندی ها افزوده شد..", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(requireActivity(), "خطا در افزودن ویدیو", Toast.LENGTH_SHORT).show()
+
+                }
+
+                
+            })
+
+
+
+
+
+        })
+
+
+
+
+
         return binding.root
     }
 
@@ -71,6 +127,7 @@ class PlayerFragment : Fragment() {
     }
 
     private external fun videoKeyForBundle():String
+    private external fun videoKeyForBundleVO():String
 
 
 }

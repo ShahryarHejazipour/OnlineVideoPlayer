@@ -1,33 +1,30 @@
-package com.tispunshahryar960103.aparatmovies.viewModel
+package com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tispunshahryar960103.aparatmovies.models.Video
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import okhttp3.ResponseBody
 import java.lang.Exception
 
-class LoginViewModel(private val repository: MyRepository):ViewModel() {
+class NewVideosViewModel(private val myRepository: MyRepository) : ViewModel() {
 
+    lateinit var job: Job
 
-
-    private lateinit var job: Job
-
-    var mutableLiveData = MutableLiveData<ResponseBody>()
+    var mutableLiveData = MutableLiveData<List<Video>>()
     var mutableError = MutableLiveData<String>()
 
 
-
-    fun login(username:String,password:String) {
+    fun getNewVideos() {
 
         job = viewModelScope.launch {
 
             try {
 
-                val responseBody = repository.login(username,password)
-                mutableLiveData.value = responseBody
+                val newVideosList = myRepository.getNewVideos()
+                mutableLiveData.value = newVideosList
             } catch (e: Exception) {
                 mutableError.value = e.toString()
             }
@@ -40,4 +37,6 @@ class LoginViewModel(private val repository: MyRepository):ViewModel() {
         super.onCleared()
         if (::job.isInitialized) job.cancel()
     }
+
+
 }

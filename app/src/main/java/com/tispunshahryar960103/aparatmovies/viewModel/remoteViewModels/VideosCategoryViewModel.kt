@@ -1,4 +1,4 @@
-package com.tispunshahryar960103.aparatmovies.viewModel
+package com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,9 +7,9 @@ import com.tispunshahryar960103.aparatmovies.models.Video
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
-class SpecialVideosViewModel(private val repository: MyRepository): ViewModel() {
-
+class VideosCategoryViewModel(private val repository: MyRepository):ViewModel() {
 
 
     lateinit var job: Job
@@ -17,28 +17,26 @@ class SpecialVideosViewModel(private val repository: MyRepository): ViewModel() 
     var mutableLiveData = MutableLiveData<List<Video>>()
     var mutableError = MutableLiveData<String>()
 
-    fun getSpecialVideos(){
+
+    fun getVideosCategory(id:Int,from:Int,to:Int) {
 
         job = viewModelScope.launch {
 
             try {
-                val specialVideoList=repository.getSpecialVideos()
-                mutableLiveData.value=specialVideoList
-            }catch (e:Exception){
-                mutableError.value=e.toString()
+
+                val videoCategoryList = repository.getVideosCategory(id,from,to)
+                mutableLiveData.value = videoCategoryList
+            } catch (e: Exception) {
+                mutableError.value = e.toString()
             }
 
+
         }
-
-
     }
 
     override fun onCleared() {
         super.onCleared()
         if (::job.isInitialized) job.cancel()
     }
-
-
-
 
 }

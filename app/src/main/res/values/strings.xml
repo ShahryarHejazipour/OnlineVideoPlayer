@@ -24,4 +24,5 @@
     <string name="login_success">ورود به برنامه به درستی انجام شد ..</string>
     <string name="register_failed">خطا در ثبت نام ..</string>
     <string name="login_failed">خطا در ورود به برنامه ..</string>
+    <string name="your_favorite_videos">Your Favorite Videos</string>
 </resources>

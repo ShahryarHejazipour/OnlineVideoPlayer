@@ -12,16 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import com.tispunshahryar960103.aparatmovies.adapter.NewsAdapter
 import com.tispunshahryar960103.aparatmovies.adapter.VideosAdapter
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentHomeBinding
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
-import com.tispunshahryar960103.aparatmovies.utils.AppConfig
-import com.tispunshahryar960103.aparatmovies.viewModel.*
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.*
 import com.tispunshahryar960103.aparatmovies.webService.ApiClient
 import com.tispunshahryar960103.aparatmovies.webService.IService
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment() : Fragment()/*,ViewPager.OnPageChangeListener*/ {
@@ -34,7 +31,7 @@ class HomeFragment() : Fragment()/*,ViewPager.OnPageChangeListener*/ {
     lateinit var newVideosViewModel: NewVideosViewModel
     lateinit var newVideosViewModelFactory: NewVideosViewModelFactory
 
-    lateinit var specialVideosViewModel:SpecialVideosViewModel
+    lateinit var specialVideosViewModel: SpecialVideosViewModel
     lateinit var specialVideosViewModelFactory: SpecialVideosViewModelFactory
 
     lateinit var bestVideosViewModel: BestVideosViewModel
@@ -86,7 +83,8 @@ class HomeFragment() : Fragment()/*,ViewPager.OnPageChangeListener*/ {
         //Implementing SpecialVideos webService
         binding.progressSpecialVideos.visibility=View.VISIBLE
         specialVideosViewModelFactory= SpecialVideosViewModelFactory(repository)
-        specialVideosViewModel=ViewModelProvider(requireActivity(),specialVideosViewModelFactory).get(SpecialVideosViewModel::class.java)
+        specialVideosViewModel=ViewModelProvider(requireActivity(),specialVideosViewModelFactory).get(
+            SpecialVideosViewModel::class.java)
         specialVideosViewModel.getSpecialVideos()
         specialVideosViewModel.mutableLiveData.observe(requireActivity(), Observer {
 
@@ -108,7 +106,8 @@ class HomeFragment() : Fragment()/*,ViewPager.OnPageChangeListener*/ {
         //Implementing BestVideos webService
         binding.progressBestVideos.visibility=View.VISIBLE
         bestVideosViewModelFactory= BestVideosViewModelFactory(repository)
-        bestVideosViewModel=ViewModelProvider(requireActivity(),bestVideosViewModelFactory).get(BestVideosViewModel::class.java)
+        bestVideosViewModel=ViewModelProvider(requireActivity(),bestVideosViewModelFactory).get(
+            BestVideosViewModel::class.java)
         bestVideosViewModel.getBestVideos()
         bestVideosViewModel.mutableLiveData.observe(requireActivity(), Observer {
             binding.progressBestVideos.visibility=View.GONE
