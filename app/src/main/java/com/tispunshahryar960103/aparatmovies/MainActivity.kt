@@ -12,15 +12,18 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.navigation.NavigationView
 import com.tispunshahryar960103.aparatmovies.databinding.ActivityMainBinding
+import com.tispunshahryar960103.aparatmovies.utils.AppConfig
 import com.tispunshahryar960103.aparatmovies.utils.Constants
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener,
-    SearchView.OnQueryTextListener {
+    SearchView.OnQueryTextListener, NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var binding: ActivityMainBinding
     lateinit var navController: NavController
     var toggle: ActionBarDrawerToggle? = null
+    lateinit var appConfig: AppConfig
 
     companion object {
         init {
@@ -35,7 +38,7 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-
+        appConfig = AppConfig(applicationContext)
 
         binding.bottomMenu.setOnItemSelectedListener(this)
 
@@ -75,6 +78,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
         val str: String = stringFromJNI()
         Toast.makeText(applicationContext, str, Toast.LENGTH_SHORT).show()
 
+        binding.navigationView.setNavigationItemSelectedListener(this)
+
 
     }
 
@@ -100,6 +105,19 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 navigateToAFragment(R.id.favoriteFragment)
                 // checkSelectedItem(2)
             }
+
+            R.id.item_login -> {
+
+                val userId = appConfig.getLoginCode()
+                if (userId > 0) {
+                   // navigateToAFragment(R.id.categoryFragment)
+                    Toast.makeText(applicationContext, "شما پیش از این وارد شده بوده اید", Toast.LENGTH_SHORT).show()
+                } else {
+                    navigateToAFragment(R.id.loginFragment)
+                }
+
+            }
+
         }
 
         return true

@@ -17,6 +17,7 @@ import com.tispunshahryar960103.aparatmovies.adapter.NewsAdapter
 import com.tispunshahryar960103.aparatmovies.adapter.VideosAdapter
 import com.tispunshahryar960103.aparatmovies.databinding.FragmentHomeBinding
 import com.tispunshahryar960103.aparatmovies.repository.MyRepository
+import com.tispunshahryar960103.aparatmovies.utils.AppConfig
 import com.tispunshahryar960103.aparatmovies.viewModel.*
 import com.tispunshahryar960103.aparatmovies.webService.ApiClient
 import com.tispunshahryar960103.aparatmovies.webService.IService
@@ -49,6 +50,7 @@ class HomeFragment() : Fragment()/*,ViewPager.OnPageChangeListener*/ {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
 
         iService = ApiClient.getClient()
         repository = MyRepository(iService)

@@ -8,7 +8,6 @@
     <string name="latest">Latest</string>
     <string name="setting">Setting</string>
     <string name="rate_app">Rate App</string>
-    <string name="login">Login</string>
     <string name="exit">Exit</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -16,4 +15,13 @@
     <string name="special_videos">Special Videos</string>
     <string name="best_videos">Best Videos</string>
     <string name="search">Search</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="skip">Skip</string>
+    <string name="register_success">ثبت نام به درستی انجام شد ..</string>
+    <string name="login_success">ورود به برنامه به درستی انجام شد ..</string>
+    <string name="register_failed">خطا در ثبت نام ..</string>
+    <string name="login_failed">خطا در ورود به برنامه ..</string>
 </resources>

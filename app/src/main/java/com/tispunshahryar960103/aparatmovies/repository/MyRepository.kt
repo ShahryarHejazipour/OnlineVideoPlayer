@@ -6,6 +6,7 @@ import com.tispunshahryar960103.aparatmovies.models.Video
 import com.tispunshahryar960103.aparatmovies.webService.IService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.ResponseBody
 
 class MyRepository(private val iService: IService) {
 
@@ -54,6 +55,17 @@ class MyRepository(private val iService: IService) {
     suspend fun search(querySearch:String?):List<Video>{
         return withContext(dispatcher){
             iService.search(querySearch)
+        }
+    }
+
+    suspend fun register(username:String,password:String):ResponseBody{
+        return withContext(dispatcher){
+            iService.register(username,password)
+        }
+    }
+    suspend fun login(username:String,password:String):ResponseBody{
+        return withContext(dispatcher){
+            iService.login(username,password)
         }
     }
 

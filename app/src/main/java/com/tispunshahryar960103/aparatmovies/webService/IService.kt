@@ -3,6 +3,8 @@ package com.tispunshahryar960103.aparatmovies.webService
 import com.tispunshahryar960103.aparatmovies.models.Category
 import com.tispunshahryar960103.aparatmovies.models.News
 import com.tispunshahryar960103.aparatmovies.models.Video
+import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface IService {
@@ -31,7 +33,12 @@ interface IService {
     @GET("search.php")
     suspend fun search(@Query("title") querySearch:String?):List<Video>
 
+    @POST("register.php")
+    @FormUrlEncoded
+    suspend fun register(@Field("username") username:String,@Field("password") password:String):ResponseBody
 
-
+    @POST("login.php")
+    @FormUrlEncoded
+    suspend fun login(@Field("username") username:String,@Field("password") password:String):ResponseBody
 
 }

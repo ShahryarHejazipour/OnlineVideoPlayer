@@ -19,6 +19,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
 
+
+
         //for NDK
         externalNativeBuild{
 
@@ -196,6 +198,27 @@ dependencies {
     //-------------------------------------------------------------------
     //View Pager Indicator
     implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+
+    //--------------------------------------------------------
+
+    //Klaxon is a library to parse JSON in Kotlin
+    implementation 'com.beust:klaxon:5.5'
+
+    //--------------------------------------------------------------------
+
+    //EncryptedSharedPreferences
+
+    //1- an external library for secure shared preferences
+    implementation 'com.scottyab:secure-preferences-lib:0.1.7'
+
+/*
+
+    //2- from developer android
+    implementation "androidx.security:security-crypto:1.1.0-alpha03"
+
+    // For Identity Credential APIs
+    implementation "androidx.security:security-identity-credential:1.0.0-alpha03"
+*/
 
 
 

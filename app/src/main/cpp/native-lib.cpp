@@ -123,6 +123,30 @@ Java_com_tispunshahryar960103_aparatmovies_view_fragments_PlayerFragment_videoKe
 }
 
 
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_utils_AppConfig_getKeyAlias(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "Shahan960103";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
+
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_utils_AppConfig_getSharedFileName(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "secured_shared";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
+
 
 
 
