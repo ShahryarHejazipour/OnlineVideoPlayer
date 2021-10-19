@@ -180,6 +180,18 @@ Java_com_tispunshahryar960103_aparatmovies_orm_AppDatabase_getDatabaseName(
 }
 
 
+extern "C" JNIEXPORT jstring JNICALL
+Java_com_tispunshahryar960103_aparatmovies_view_fragments_PrivacyPolicyFragment_privacyPolicyLink(
+        JNIEnv* env,
+        jobject /* this */
+){
+
+    std::string mUrl = "https://androidsupport.ir/pack/aparat/privacy-policy.html";
+    return env->NewStringUTF(mUrl.c_str());
+
+}
+
+
 
 
 

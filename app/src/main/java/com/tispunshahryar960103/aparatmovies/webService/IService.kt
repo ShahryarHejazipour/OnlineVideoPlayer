@@ -1,6 +1,7 @@
 package com.tispunshahryar960103.aparatmovies.webService
 
 import com.tispunshahryar960103.aparatmovies.models.Category
+import com.tispunshahryar960103.aparatmovies.models.Creator
 import com.tispunshahryar960103.aparatmovies.models.News
 import com.tispunshahryar960103.aparatmovies.models.Video
 import okhttp3.ResponseBody
@@ -41,4 +42,7 @@ interface IService {
     @FormUrlEncoded
     suspend fun login(@Field("username") username:String,@Field("password") password:String):ResponseBody
 
+
+    @GET("getCreator.php")
+    suspend fun getCreator(@Query("id") creatorId:Int):Creator
 }

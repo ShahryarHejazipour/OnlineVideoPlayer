@@ -1,5 +1,6 @@
 package com.tispunshahryar960103.aparatmovies
 
+import android.content.ActivityNotFoundException
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +19,9 @@ import com.tispunshahryar960103.aparatmovies.orm.AppDatabase
 import com.tispunshahryar960103.aparatmovies.orm.VideoDAO
 import com.tispunshahryar960103.aparatmovies.utils.AppConfig
 import com.tispunshahryar960103.aparatmovies.utils.Constants
+import android.content.Intent
+import android.net.Uri
+
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener,
     SearchView.OnQueryTextListener, NavigationView.OnNavigationItemSelectedListener {
@@ -120,6 +124,24 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 } else {
                     navigateToAFragment(R.id.loginFragment)
                 }
+
+            }
+
+            R.id.item_setting ->{
+                navigateToAFragment(R.id.settingFragment)
+
+            }
+
+            R.id.item_rate ->{
+
+                val uri = Uri.parse("market://details?id=$packageName")
+                val myAppLinkToMarket = Intent(Intent.ACTION_VIEW, uri)
+                try {
+                    startActivity(myAppLinkToMarket)
+                } catch (e: ActivityNotFoundException) {
+                    Toast.makeText(this, "Impossible to find an application for the market", Toast.LENGTH_LONG).show()
+                }
+
 
             }
 

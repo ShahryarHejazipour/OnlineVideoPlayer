@@ -82,4 +82,17 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.tispunshahryar960103.aparatmovies.view.fragments.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.tispunshahryar960103.aparatmovies.view.fragments.PrivacyPolicyFragment"
+        android:label="PrivacyPolicyFragment" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.tispunshahryar960103.aparatmovies.view.fragments.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
 </navigation>

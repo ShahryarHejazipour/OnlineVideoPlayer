@@ -25,4 +25,11 @@
     <string name="register_failed">خطا در ثبت نام ..</string>
     <string name="login_failed">خطا در ورود به برنامه ..</string>
     <string name="your_favorite_videos">Your Favorite Videos</string>
+    <string name="about_us">About Us</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="more_apps">More Apps</string>
+    <string name="version_1_11">Version 1.11</string>
+    <string name="views">Views : </string>
+    <string name="description">Description</string>
+    <string name="creator">Creator : </string>
 </resources>

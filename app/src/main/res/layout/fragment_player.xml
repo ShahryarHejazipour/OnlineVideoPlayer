@@ -8,6 +8,9 @@
             name="video"
             type="com.tispunshahryar960103.aparatmovies.models.Video" />
 
+        <variable
+            name="creator"
+            type="com.tispunshahryar960103.aparatmovies.models.Creator" />
     </data>
 
     <RelativeLayout
@@ -61,6 +64,95 @@
             android:layout_below="@id/toolbar"
             android:layout_centerInParent="true"
             android:focusable="true" />
+        <LinearLayout
+            android:id="@+id/linear_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/exo_player"
+            android:layout_marginTop="@dimen/_16sdp">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/views"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginLeft="@dimen/_16sdp"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{video.view}"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="#E91E63"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/_16sdp"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{video.time}"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="#E91E63"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_170sdp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@id/linear_view"
+            android:orientation="horizontal"
+            android:id="@+id/linear_creator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/creator"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginLeft="@dimen/_16sdp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{creator.title}"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="#E91E63"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/_16sdp"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/linear_creator"
+            android:layout_marginTop="@dimen/_16sdp">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/white"
+                android:padding="@dimen/_12sdp"
+                android:background="@drawable/bg_service"
+                android:layout_marginLeft="@dimen/_16sdp"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{video.description}"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginLeft="@dimen/_16sdp"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 </layout>

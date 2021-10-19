@@ -1,6 +1,7 @@
 package com.tispunshahryar960103.aparatmovies.repository
 
 import com.tispunshahryar960103.aparatmovies.models.Category
+import com.tispunshahryar960103.aparatmovies.models.Creator
 import com.tispunshahryar960103.aparatmovies.models.News
 import com.tispunshahryar960103.aparatmovies.models.Video
 import com.tispunshahryar960103.aparatmovies.webService.IService
@@ -66,6 +67,13 @@ class MyRepository(private val iService: IService) {
     suspend fun login(username:String,password:String):ResponseBody{
         return withContext(dispatcher){
             iService.login(username,password)
+        }
+    }
+
+    suspend fun getCreator(creatorId:Int):Creator{
+
+        return withContext(dispatcher){
+            iService.getCreator(creatorId)
         }
     }
 

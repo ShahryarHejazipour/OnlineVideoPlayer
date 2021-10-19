@@ -25,10 +25,15 @@ import com.tispunshahryar960103.aparatmovies.models.Video
 import com.tispunshahryar960103.aparatmovies.models.VideoVO
 import com.tispunshahryar960103.aparatmovies.orm.AppDatabase
 import com.tispunshahryar960103.aparatmovies.orm.VideoDAO
+import com.tispunshahryar960103.aparatmovies.repository.MyRepository
 import com.tispunshahryar960103.aparatmovies.repository.RoomRepository
 import com.tispunshahryar960103.aparatmovies.utils.Constants
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.CreatorViewModel
+import com.tispunshahryar960103.aparatmovies.viewModel.remoteViewModels.CreatorViewModelFactory
 import com.tispunshahryar960103.aparatmovies.viewModel.roomViewModels.InsertViewModel
 import com.tispunshahryar960103.aparatmovies.viewModel.roomViewModels.InsertViewModelFactory
+import com.tispunshahryar960103.aparatmovies.webService.ApiClient
+import com.tispunshahryar960103.aparatmovies.webService.IService
 
 
 class PlayerFragment : Fragment() {
@@ -43,10 +48,14 @@ class PlayerFragment : Fragment() {
     lateinit var video:Video
     lateinit var player:SimpleExoPlayer
     lateinit var videoDAO: VideoDAO
+    lateinit var iService: IService
+    lateinit var repository: MyRepository
 
     lateinit var insertViewModel: InsertViewModel
     lateinit var insertViewModelFactory: InsertViewModelFactory
     lateinit var roomRepository: RoomRepository
+    lateinit var creatorViewModelFactory:CreatorViewModelFactory
+    lateinit var creatorViewModel: CreatorViewModel
 
 
     override fun onCreateView(
@@ -103,12 +112,25 @@ class PlayerFragment : Fragment() {
 
                 }
 
-                
+
             })
 
 
 
 
+
+        })
+
+
+        iService=ApiClient.getClient()
+        repository= MyRepository(iService)
+        creatorViewModelFactory=CreatorViewModelFactory(repository)
+        creatorViewModel=ViewModelProvider(requireActivity(),creatorViewModelFactory).get(CreatorViewModel::class.java)
+        creatorViewModel.getCreator(video.creator.toInt())
+        creatorViewModel.mutableLiveData.observe(requireActivity(), Observer {
+
+
+            binding.creator=it
 
         })
 
